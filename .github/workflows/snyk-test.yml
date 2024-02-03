@@ -1,4 +1,5 @@
 name: "Snyk"
+on: push
 description: "Check your Node application for vulnerabilties using Snyk"
 author: "Gareth Rushgrove"
 branding:
