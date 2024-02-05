@@ -7,18 +7,15 @@ jobs:
       - uses: actions/checkout@v4
       - uses: snyk/actions/setup@master
       - name: Snyk Test
-        #run: snyk test --sarif-file-output=snyk-sarif1.json --severity-threshold=critical
         run: snyk test --json-file-output=vuln.json --severity-threshold=critical
 
         continue-on-error: true
         env:
            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Parse json file
-        #run: cat snyk-sarif1.json
         run: cat vuln.json
 
         continue-on-error: true
-      #- name: Upload SARIF file
-       # uses: github/codeql-action/upload-sarif@v3
-        #with:
-         # sarif_file: snyk-sarif1.json
+      - name: Create Issues
+        run: ./create_issues.py -f vuln.json -t ${{ secrets.GH_TOKEN }} -r ${{ GITHUB_REPOSITORY }}
+      
