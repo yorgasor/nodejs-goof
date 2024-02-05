@@ -17,5 +17,5 @@ jobs:
 
         continue-on-error: true
       - name: Create Issues
-        run: ./create_issues.py -f vuln.json -t ${{ secrets.GH_TOKEN }} -r $GITHUB_REPOSITORY 
+        run: python3 create_issues.py -f vuln.json -t ${{ secrets.GH_TOKEN }} -r $GITHUB_REPOSITORY 
       
