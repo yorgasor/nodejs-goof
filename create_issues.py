@@ -6,7 +6,7 @@ import requests
 from time import sleep
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
-######################################################################################
+#######################################################################################
 # create_issues.py
 #
 #   Description:
